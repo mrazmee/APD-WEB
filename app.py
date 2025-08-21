@@ -75,8 +75,8 @@ def analisis_gambar(img):
         cv2.rectangle(img, (px1, ty - th - 5), (px1 + tw, ty + 5), warna, -1)
         cv2.putText(img, teks, (px1, ty), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
 
-    if len(deteksi_orang) == 0:
-        laporan = ["Tidak ada pekerja terdeteksi"]
+    if not deteksi_orang:
+        laporan.append("Tidak ada pekerja terdeteksi")
 
     return img, laporan
 
@@ -145,6 +145,7 @@ if uploaded_file is not None:
         st.table(df_laporan)  # atau pakai st.dataframe(df_laporan) kalau mau scroll
     else:
         st.success("✅ Semua pekerja lengkap APD")
+
 
 
 
