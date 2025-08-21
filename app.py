@@ -134,17 +134,25 @@ if uploaded_file is not None:
 
         data_laporan = []
         for l in laporan:
-            person, detail = l.split(":", 1)
-            data_laporan.append({
-                "Person": person.strip(),
-                "Status": "❌ Tidak Patuh",
-                "Detail": detail.strip()
-            })
-
+            if ":" in l:
+                person, detail = l.split(":", 1)
+                data_laporan.append({
+                    "Person": person.strip(),
+                    "Status": "❌ Tidak Patuh",
+                    "Detail": detail.strip()
+                })
+            else:
+                # laporan umum (misal: Tidak ada pekerja terdeteksi)
+                data_laporan.append({
+                    "Person": "-",
+                    "Status": l.strip(),
+                    "Detail": "-"
+                })
         df_laporan = pd.DataFrame(data_laporan)
         st.table(df_laporan)  # atau pakai st.dataframe(df_laporan) kalau mau scroll
     else:
         st.success("✅ Semua pekerja lengkap APD")
+
 
 
 
