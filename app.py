@@ -142,16 +142,14 @@ if uploaded_file is not None:
                     "Detail": detail.strip()
                 })
             else:
-                # laporan umum (misal: Tidak ada pekerja terdeteksi)
-                data_laporan.append({
-                    "Person": "-",
-                    "Status": l.strip(),
-                    "Detail": "-"
-                })
-        df_laporan = pd.DataFrame(data_laporan)
-        st.table(df_laporan)  # atau pakai st.dataframe(df_laporan) kalau mau scroll
+                st.error(l.strip())
+
+        if data_laporan:
+            df_laporan = pd.DataFrame(data_laporan)
+            st.table(df_laporan)  # atau pakai st.dataframe(df_laporan) kalau mau scroll
     else:
         st.success("✅ Semua pekerja lengkap APD")
+
 
 
 
