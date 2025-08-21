@@ -7,8 +7,8 @@ from PIL import Image
 # ==============================
 # KONFIGURASI MODEL
 # ==============================
-MODEL_UTAMA_PATH = "Model\\Utama\\best (1).pt"
-MODEL_SEPATU_PATH = "Model\\Sepatu\\best.pt"
+MODEL_UTAMA_PATH = "Model/Utama/best (1).pt"
+MODEL_SEPATU_PATH = "Model/Sepatu/best.pt"
 NAMA_KELAS_ORANG = "Person"
 APD_WAJIB = ["Hardhat", "Mask", "Safety Vest", "boot"]
 
@@ -142,4 +142,5 @@ if uploaded_file is not None:
         st.table(df_laporan)  # atau pakai st.dataframe(df_laporan) kalau mau scroll
     else:
         st.success("✅ Semua pekerja lengkap APD")
+
 
