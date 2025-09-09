@@ -9,7 +9,7 @@ from PIL import Image
 # ==============================
 MODEL_PATH = "Model/Utama/best (1).pt"  # Hanya menggunakan 1 model
 NAMA_KELAS_ORANG = "Person"
-APD_WAJIB = ["Hardhat", "Mask", "Safety Vest", "boot"]
+APD_WAJIB = ["Hardhat", "Mask", "Safety Vest"]  # Boot sudah dihapus
 
 # Load model (hanya 1 model)
 model = YOLO(MODEL_PATH)
@@ -60,14 +60,9 @@ def analisis_gambar(img):
             kelas_pos = apd  # contoh: "Hardhat"
             kelas_neg = f"NO-{apd}"  # contoh: "NO-Hardhat"
             
-            # Logika evaluasi untuk setiap APD
-            if apd == "boot":
-                # Untuk boot, cukup cek apakah terdeteksi (karena tidak ada NO-boot)
-                kewajiban_terpenuhi = kelas_pos in kelas_terdeteksi
-            else:
-                # Untuk APD lainnya, harus ada kelas positif DAN tidak ada kelas negatif
-                kewajiban_terpenuhi = (kelas_pos in kelas_terdeteksi) and \
-                                      (kelas_neg not in kelas_terdeteksi)
+            # Logika evaluasi: harus ada kelas positif DAN tidak ada kelas negatif
+            kewajiban_terpenuhi = (kelas_pos in kelas_terdeteksi) and \
+                                  (kelas_neg not in kelas_terdeteksi)
             
             if not kewajiban_terpenuhi:
                 pelanggaran_ditemukan.append(f"Tidak Pakai {apd}")
@@ -179,9 +174,9 @@ st.markdown(
         <strong>ℹ️ Informasi Model:</strong><br>
         • Menggunakan model YOLOv8 dengan 7 kelas deteksi<br>
         • Kelas: Person, Mask, NO-Mask, Hardhat, NO-Hardhat, Safety Vest, NO-Safety Vest<br>
-        • Evaluasi kepatuhan berdasarkan keberadaan APD positif dan tidak adanya APD negatif
+        • Evaluasi kepatuhan berdasarkan keberadaan APD positif dan tidak adanya APD negatif<br>
+        • APD yang dievaluasi: Hardhat, Mask, Safety Vest
     </div>
     """,
     unsafe_allow_html=True
-
 )
