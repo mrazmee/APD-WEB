@@ -9,9 +9,9 @@ from PIL import Image
 # ==============================
 MODEL_PATH = "Model/Utama/best (1).pt"  # Hanya menggunakan 1 model
 NAMA_KELAS_ORANG = "Person"
-APD_WAJIB = ["Hardhat", "Mask", "Safety Vest"]  # Boot sudah dihapus
+APD_WAJIB = ["Hardhat", "Mask", "Safety Vest"] 
 
-# Load model (hanya 1 model)
+# Load model 
 model = YOLO(MODEL_PATH)
 
 # ==============================
@@ -180,3 +180,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
