@@ -101,7 +101,7 @@ def analisis_gambar(img):
 # ==============================
 # STREAMLIT APP
 # ==============================
-st.title("🚧 Deteksi Kepatuhan APD (YOLOv8) - Single Model")
+st.title("🚧 Deteksi Kepatuhan APD (YOLOv8)")
 
 st.markdown(
     """
@@ -113,15 +113,12 @@ st.markdown(
         <ul style="margin-top:10px;">
             <li>👷 Helm (Hardhat)</li>
             <li>👷 Rompi Keselamatan (Safety Vest)</li>
-            <li>🥾 Sepatu (Boot)</li>
             <li>😷 Masker (Mask)</li>
         </ul>
         <em>
         Pengguna cukup mengunggah gambar ke dalam sistem, dan aplikasi akan menganalisis serta menampilkan hasil deteksi, termasuk potensi pelanggaran APD. 
         Aplikasi ini bertujuan untuk membantu meningkatkan keselamatan kerja secara praktis dan efisien melalui analisis visual berbasis AI.
         </em>
-        <br><br>
-        <strong>Update: Sekarang menggunakan model tunggal dengan 8 kelas deteksi (Person + 7 APD classes)</strong>
     </div>
     """,
     unsafe_allow_html=True
@@ -180,10 +177,11 @@ st.markdown(
     """
     <div style="background-color:rgba(0,100,0,0.1); padding:10px; border-radius:5px; border-left:4px solid #00AA00;">
         <strong>ℹ️ Informasi Model:</strong><br>
-        • Menggunakan 1 model YOLOv8 dengan 7 kelas deteksi<br>
+        • Menggunakan model YOLOv8 dengan 7 kelas deteksi<br>
         • Kelas: Person, Mask, NO-Mask, Hardhat, NO-Hardhat, Safety Vest, NO-Safety Vest<br>
         • Evaluasi kepatuhan berdasarkan keberadaan APD positif dan tidak adanya APD negatif
     </div>
     """,
     unsafe_allow_html=True
+
 )
